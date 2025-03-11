@@ -276,7 +276,7 @@ public class StreamDeck implements InputReportListener, IStreamDeck {
 	/**
 	 * Number of buttons on the ESD
 	 */
-	public static final int BUTTON_COUNT = 15;
+	public static final int BUTTON_COUNT = 18;
 
 	/**
 	 * Icon size of one key
@@ -286,7 +286,7 @@ public class StreamDeck implements InputReportListener, IStreamDeck {
 	/**
 	 * Page size that can be sent to the ESD at once
 	 */
-	public static final int PAGE_PACKET_SIZE = 8190;
+	public static final int PAGE_PACKET_SIZE = 1023;
 
 	/**
 	 * Pixels(times 3 to get the amount of bytes) of an icon that can be sent with page 1 of the image command

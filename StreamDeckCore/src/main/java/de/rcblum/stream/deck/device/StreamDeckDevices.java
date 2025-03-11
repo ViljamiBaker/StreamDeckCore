@@ -49,13 +49,13 @@ public class StreamDeckDevices {
 	 * devices will be wrapped in a software SD, <code>false</code> the StreamDeck
 	 * will be returned directly.
 	 */
-	private static boolean enableSoftwareStreamDeck = true; 
+	private static boolean enableSoftwareStreamDeck = false; 
 	
 	private static final Logger LOGGER = LogManager.getLogger(StreamDeckDevices.class);
 	
 	public static final int VENDOR_ID = 4057;
 	
-	public static final int PRODUCT_ID = 96;
+	public static final int PRODUCT_ID = 109;
 
 	private static List<HidDeviceInfo> deckInfos = null;
 
@@ -82,10 +82,10 @@ public class StreamDeckDevices {
 	public static HidDeviceInfo getStreamDeckInfo() {
 		if (deckInfos == null) {
 			deckInfos = new ArrayList<>(5);
-			LOGGER.info("Scanning for devices");
+			System.out.println("Scanning for devices");
 			List<HidDeviceInfo> devList = PureJavaHidApi.enumerateDevices();
 			for (HidDeviceInfo info : devList) {
-				LOGGER.debug("Vendor-ID: " + info.getVendorId() + ", Product-ID: " + info.getProductId());
+				System.out.println("Vendor-ID: " + info.getVendorId() + ", Product-ID: " + info.getProductId());
 				if (info.getVendorId() == VENDOR_ID && info.getProductId() == PRODUCT_ID) {
 					LOGGER.info("Found ESD ["+info.getVendorId()+":"+info.getProductId()+"]");
 					deckInfos.add(info);

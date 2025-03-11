@@ -1,5 +1,4 @@
 package tutorial.de.rcblum.stream.deck;
-
 import de.rcblum.stream.deck.device.IStreamDeck;
 import de.rcblum.stream.deck.device.StreamDeckDevices;
 import de.rcblum.stream.deck.event.KeyEvent;
@@ -12,26 +11,14 @@ public class Example2_Receiving_key_events {
 		// Get the first connected (or software) ESD:
 		IStreamDeck streamDeck = StreamDeckDevices.getStreamDeck();
 		// Reset the ESD so we can display our icon on it:
-		streamDeck.reset();
-		// Set the brightness to 75%
-		streamDeck.setBrightness(75);
-		// Add the Listener to the stream deck:
-		streamDeck.addKeyListener(new ExampleListener());
-		// Wait 30 seconds before shutting down
+		System.out.println(streamDeck.addKeyListener(new ExampleListener()));
+		streamDeck.setBrightness(200);
 		try {
-			Thread.sleep(30_000);
+			Thread.sleep(100_000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 			Thread.currentThread().interrupt();
 		}
-		// Reset the stream deck to display nothing
-		streamDeck.reset();
-		// Set the brightness to 0%
-		streamDeck.setBrightness(0);
-		// Tell the device to shutdown
-		streamDeck.stop();
-		// wait for the device to shutdown
-		streamDeck.waitForCompletion();
 	}
 	
 	public static class ExampleListener implements StreamKeyListener {
